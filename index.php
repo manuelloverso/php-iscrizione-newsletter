@@ -1,10 +1,14 @@
 <?php 
 
+session_start();
+
 include_once __DIR__ . '/functions.php';
 
 $email= $_GET['email'];
 
 $message = showMessage(isAnEmail($email));
+
+$_SESSION['message']= $message;
 
 
 ?>

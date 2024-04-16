@@ -8,8 +8,9 @@ function isAnEmail($email){
   
   function showMessage($bool){
       if ($bool == true) {
+        header('Location: ./thankyou.php');
           return [
-             "status" => "You've succesfully subscribed to the newsletter",
+             "status" => "Thank You! You've succesfully subscribed to the newsletter",
              "class" => "success"  
           ];
       }
