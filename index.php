@@ -1,5 +1,14 @@
 <?php 
 
+$email= $_GET['email'];
+var_dump($email);
+
+function checkEmail($email){
+  if (str_contains($email , '@') && str_contains($email , '.')) {
+    return true;
+  }
+  return false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,5 +22,24 @@
     <title>Newsletter</title>
 </head>
 <body>
+    <div class="container">
+       <form action="" method="get">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+                type="email"
+                class="form-control"
+                name="email"
+                id=""
+                aria-describedby="emailHelpId"
+                placeholder="abc@mail.com"
+            />
+        </div>
+        <button class="btn btn-dark" type="submit">Submit</button>
+        
+       </form>
+    </div>
+     
+
 </body>
 </html>
