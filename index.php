@@ -1,13 +1,27 @@
 <?php 
 
 $email= $_GET['email'];
-var_dump($email);
 
-function checkEmail($email){
+$message = showMessage(isAnEmail($email));
+
+function isAnEmail($email){
   if (str_contains($email , '@') && str_contains($email , '.')) {
     return true;
   }
   return false;
+}
+
+function showMessage($bool){
+    if ($bool == true) {
+        return [
+           "status" => "You've succesfully subscribed to the newsletter",
+           "class" => "success"  
+        ];
+    }
+    return [
+        "status" => "Wrong email, try again",
+        "class" => "danger"  
+     ];
 }
 ?>
 
@@ -27,7 +41,7 @@ function checkEmail($email){
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input
-                type="email"
+                type="text"
                 class="form-control"
                 name="email"
                 id=""
@@ -38,6 +52,17 @@ function checkEmail($email){
         <button class="btn btn-dark" type="submit">Submit</button>
         
        </form>
+
+       <?php if (isset($email) && $email != '') : ?>
+        <div
+            class="alert alert-<?= $message['class'] ?>"
+            role="alert"
+        >
+            <strong> <?= $message['status'] ?> </strong>
+        </div>
+        
+       <?php endif; ?>
+
     </div>
      
 
