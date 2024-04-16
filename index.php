@@ -35,6 +35,11 @@ $_SESSION['message']= $message;
                 id=""
                 aria-describedby="emailHelpId"
                 placeholder="abc@mail.com"
+                <?php  
+                    if (isAnEmail($email) == false) {
+                        echo "value='$email'";
+                    }
+                ?>
             />
         </div>
         <button class="btn btn-dark" type="submit">Submit</button>
